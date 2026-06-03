@@ -28,8 +28,7 @@ class SalesLinkedList:
         self.tail = None
         self.size = 0
 
-
-
+# dibawah output ke dua yawww
          # INSERT DATA
     def insert_end(self,tanggal,kategori,wilayah,jumlah,pendapatan):
 
@@ -49,3 +48,26 @@ class SalesLinkedList:
             self.tail = new_node
 
         self.size += 1
+
+        #ini output yang ke 3
+                
+# TRAVERSAL FORWARD
+    def traversal_forward(self):
+
+        current = self.head
+        data = []
+
+        while current:
+
+            data.append({
+            'Tanggal': current.tanggal,
+            'Kategori': current.kategori,
+            'Wilayah': current.wilayah,
+            'Jumlah_Penjualan': current.jumlah,
+            'Pendapatan': current.pendapatan,
+            'Total_Pendapatan': current.total
+        })
+
+            current = current.next
+
+        return pd.DataFrame(data)

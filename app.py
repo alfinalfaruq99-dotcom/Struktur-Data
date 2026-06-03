@@ -20,8 +20,7 @@ st.subheader("Status Sistem")
 
 st.success("Doubly Linked List berhasil diinisialisasi")
 
-
-
+#iini output ke dua lagi yaaaaaaaaa
 
 with st.form("form_penjualan"):
 
@@ -72,4 +71,15 @@ with st.form("form_penjualan"):
 
         st.success("Data berhasil ditambahkan")
 
+#ini outpit yang ke tiga 
 
+# AMBIL DATA DARI LINKED LIST
+df = st.session_state.sales_list.traversal_forward()
+
+# TAMPILKAN DATA
+st.subheader("📋 Data Penjualan")
+
+if not df.empty:
+    st.dataframe(df)
+else:
+    st.warning("Belum ada data")
