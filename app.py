@@ -20,6 +20,56 @@ st.subheader("Status Sistem")
 
 st.success("Doubly Linked List berhasil diinisialisasi")
 
-st.write("Head:", st.session_state.sales_list.head)
-st.write("Tail:", st.session_state.sales_list.tail)
-st.write("Size:", st.session_state.sales_list.size)
+
+
+
+with st.form("form_penjualan"):
+
+    tanggal = st.date_input("Tanggal")
+
+    kategori = st.selectbox(
+        "Kategori",
+        [
+            "Elektronik",
+            "Fashion",
+            "Kebutuhan Rumah",
+            "Kesehatan"
+        ]
+    )
+
+    wilayah = st.selectbox(
+        "Wilayah",
+        [
+            "Jakarta",
+            "Bandung",
+            "Surabaya",
+            "Makassar"
+        ]
+    )
+
+    jumlah = st.number_input(
+        "Jumlah Penjualan",
+        min_value=1,
+        step=1
+    )
+
+    pendapatan = st.number_input(
+        "Pendapatan",
+        min_value=1000
+    )
+
+    submit = st.form_submit_button("Tambah Data")
+
+    if submit:
+
+        st.session_state.sales_list.insert_end(
+            str(tanggal),
+            kategori,
+            wilayah,
+            jumlah,
+            pendapatan
+        )
+
+        st.success("Data berhasil ditambahkan")
+
+
