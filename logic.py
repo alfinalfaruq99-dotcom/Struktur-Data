@@ -91,3 +91,41 @@ class SalesLinkedList:
             current = current.next
 
         return pd.DataFrame(result)
+    
+    # DELETE DATA
+
+    def delete_by_category(self, category):
+
+        current = self.head
+
+        while current:
+
+            if current.kategori == category:
+
+            # Jika node pertama
+             if current.prev is None:
+
+                self.head = current.next
+
+                if self.head:
+                    self.head.prev = None
+
+            # Jika node tengah / akhir
+            else:
+
+                current.prev.next = current.next
+
+            # Jika node terakhir
+            if current.next:
+                current.next.prev = current.prev
+
+            else:
+                self.tail = current.prev
+
+            self.size -= 1
+
+            return True
+
+            current = current.next
+
+        return False
