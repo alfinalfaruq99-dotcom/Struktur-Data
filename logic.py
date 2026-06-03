@@ -129,3 +129,23 @@ class SalesLinkedList:
             current = current.next
 
         return False
+    
+    # KPI DATA
+def get_kpi_metrics(df):
+
+        total_revenue = df['Total_Pendapatan'].sum()
+
+        total_customer = len(df)
+
+        avg_sales = df['Jumlah_Penjualan'].mean()
+
+        avg_income = df['Pendapatan'].mean()
+
+        return {
+            
+        'total_revenue': total_revenue,
+        'total_customer': total_customer,
+        'avg_sales': avg_sales,
+        'avg_income': avg_income
+        
+        }

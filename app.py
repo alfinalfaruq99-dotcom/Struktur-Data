@@ -77,7 +77,39 @@ with st.sidebar:
 
 # AMBIL DATA DARI LINKED LIST
 df = st.session_state.sales_list.traversal_forward()
+# KPI DASHBOARD
+if not df.empty:
 
+    st.subheader("📌 KPI Dashboard")
+
+    metrics = logic.get_kpi_metrics(df)
+
+    col1, col2, col3, col4 = st.columns(4)
+
+    with col1:
+        st.metric(
+            "Total Revenue",
+            f"Rp {metrics['total_revenue']:,.0f}"
+        )
+
+    with col2:
+        st.metric(
+            "Total Data",
+            metrics['total_customer']
+        )
+
+    with col3:
+        st.metric(
+            "Rata-rata Penjualan",
+            f"{metrics['avg_sales']:.2f}"
+        )
+
+    with col4:
+        st.metric(
+            "Rata-rata Pendapatan",
+            f"Rp {metrics['avg_income']:,.0f}"
+        )
+        
 # SEARCH DATA
 st.subheader("🔍 Cari Data")
 
