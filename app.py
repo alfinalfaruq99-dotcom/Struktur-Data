@@ -109,7 +109,15 @@ if not df.empty:
             "Rata-rata Pendapatan",
             f"Rp {metrics['avg_income']:,.0f}"
         )
+top_category = (
+    df.groupby('Kategori')['Total_Pendapatan']
+    .sum()
+    .idxmax()
+    )
 
+    st.info(
+    f"📌 Kategori dengan kontribusi pendapatan terbesar saat ini adalah **{top_category}**."
+    )
         # VISUALISASI DATA
 if not df.empty:
 
@@ -152,15 +160,20 @@ if keyword:
         st.warning("Data tidak ditemukan")
 
 # TAMPILKAN DATA
-st.subheader("📋 Data Penjualan")
+st.divider()
+
+st.subheader("📋 Detail Data Penjualan")
 
 if not df.empty:
-    st.dataframe(df)
+
+    st.dataframe(
+        df,
+        use_container_width=True
+    )
+
 else:
-    st.warning("Belum ada data")
-    
-    # DELETE DATA
-st.subheader("🗑 Hapus Data")
+
+    st.warning("Belum ada data penjualan.")
 
 hapus_kategori = st.selectbox(
     "Pilih kategori yang ingin dihapus",
